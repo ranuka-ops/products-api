@@ -20,6 +20,15 @@ public class ProductService {
         return product;
     }
 
+    public ProductService() {
+        products.add(new DigitalProduct(
+                nextId++, "Clean Code (E-book)", 29.99,
+                "/downloads/clean-code.pdf", 4.2));
+        products.add(new PhysicalProduct(
+                nextId++, "27-inch Monitor", 249.99,
+                5.4, "61cm x 41cm x 18cm"));
+    }
+
     public Optional<Product> getProductById(Long id){
         return products.stream()
                 .filter(p -> p.getId().equals(id))
@@ -35,5 +44,4 @@ public class ProductService {
                 .filter(p -> p.getName().contains(name))
                 .toList();
     }
-
 }
